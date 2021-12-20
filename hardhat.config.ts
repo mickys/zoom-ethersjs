@@ -3,6 +3,7 @@ import '@typechain/hardhat'
 import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-ethers";
 import "@nomiclabs/hardhat-waffle";
+import '@openzeppelin/hardhat-upgrades';
 import "hardhat-deploy";
 import "hardhat-tracer";
 import "solidity-coverage";
@@ -94,7 +95,7 @@ module.exports = {
     apiKey: ETHERSCAN_API_KEY,
   },
   solidity: {
-    version: "0.8.2",
+    version: "0.8.3",
     compilers: [
       { version: "0.6.0", settings: {} },
       { version: "0.6.6", settings: {
@@ -113,7 +114,7 @@ module.exports = {
         } 
       },
       {
-        version: "0.8.2",
+        version: "0.8.3",
         settings: {
           optimizer: {
             enabled: false,

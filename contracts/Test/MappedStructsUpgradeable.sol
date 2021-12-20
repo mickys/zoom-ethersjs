@@ -30,7 +30,12 @@ contract MappedStructsUpgradeable is ReentrancyGuardUpgradeable, OwnableUpgradea
     mapping(uint256 => address)    public uintToAddrMap;
     mapping(address => uint256)    public addrToUintMap;
 
-    constructor () {
+    // constructor () {
+    // }
+
+    function initialize() public initializer {
+        __ReentrancyGuard_init();
+        __Ownable_init();
 
         addItem("s1", address(0x01), 1, 1, true);
         addItem("s2", address(0x02), 2, 2, true);

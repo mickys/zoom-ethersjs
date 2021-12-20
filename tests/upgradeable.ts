@@ -1,6 +1,7 @@
 const { ZERO_ADDRESS, ROLE, Data } = require('./helpers/common');
 import "@nomiclabs/hardhat-ethers";
-import { ethers } from "hardhat";
+import { ethers, upgrades} from "hardhat";
+ 
 import chai from "chai";
 import { solidity } from "ethereum-waffle";
 chai.use(solidity);
@@ -13,7 +14,7 @@ import { Zoom } from "../src/index";
 const ZoomContractName = "Zoom2";
 const TestContractName = "MappedStructsUpgradeable";
 
-describe("Zoom Tests", function () {
+describe("Zoom MappedStructsUpgradeable", function () {
 
     // web3 library instance that uses Zoom Http Provider
     let ZoomLibraryInstance: any, accounts: any; 
@@ -37,14 +38,16 @@ describe("Zoom Tests", function () {
         // console.log("    ListContract:            ", ListContract.address);
 
         const MappedStructsArtifacts = await ethers.getContractFactory(TestContractName);
-        MappedStructs = await MappedStructsArtifacts.deploy();
+        MappedStructs = await upgrades.deployProxy(MappedStructsArtifacts);
+        // MappedStructs = await MappedStructsArtifacts.deploy();
+
         await MappedStructs.deployed();
         console.log("    MappedStructsName:      ", TestContractName);
         console.log("    MappedStructs:          ", MappedStructs.address);
 
-        // const MappedStructsTwo = await MappedStructsArtifacts.deploy();
-        // await MappedStructsTwo.deployed();
-        // console.log("    MappedStructsTwo:       ", MappedStructsTwo.address);
+        //initialize
+        // let tx = await MappedStructs.initialize();
+        // await tx.wait();
 
 
         const ZoomContractArtifacts = await ethers.getContractFactory(ZoomContractName);
@@ -74,7 +77,7 @@ describe("Zoom Tests", function () {
 
 
 
-    it("true", async function () {
+    it("data returned by zoom matches data in original contract", async function () {
 
         
         console.log("========== ZOOM SETUP ===============" );

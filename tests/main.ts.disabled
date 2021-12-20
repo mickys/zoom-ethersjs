@@ -11,9 +11,9 @@ const BigNumber = ethers.BigNumber;
 import { Zoom } from "../src/index";
 
 const ZoomContractName = "Zoom2";
-const TestContractName = "MappedStructsUpgradeable";
+const TestContractName = "MappedStructs";
 
-describe("Zoom Tests", function () {
+describe("Zoom - MappedStructs", function () {
 
     // web3 library instance that uses Zoom Http Provider
     let ZoomLibraryInstance: any, accounts: any; 
