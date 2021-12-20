@@ -1,0 +1,91 @@
+{
+  "name": "zoom-ethersjs",
+  "version": "4.0.0",
+  "description": "Zoom ethers.js",
+  "main": "dist/lib/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "--build": "tsc -p . && npm run build:dec && npm run build:js && truffle compile",
+    "--build:js": "gulp build",
+    "build:dec": "tsc --declaration true --emitDeclarationOnly --declarationDir dist/types",
+    "test": "npx hardhat test",
+    "--test:local": "npm run test",
+    "--test:reuse": "tsc -p . && scripts/run_tests.sh local use-existing",
+    "--test:local:reuse": "npm run test:reuse",
+    "--test:infura": "tsc -p . && scripts/run_tests.sh infura",
+    "--test:nowlive.geth": "tsc -p . && scripts/run_tests.sh nowlive.geth",
+    "--test:nowlive.parity": "tsc -p . && scripts/run_tests.sh nowlive.parity",
+    "--test2": "tsc -p . && npx hardhat test",
+    "test-node": "npx hardhat node",
+    "test-with-node": "npx hardhat test --network localhost",
+    "--build:demo": "tsc && yarn rollup -c rollup.config.js",
+    "--demo": "yarn rollup -c rollup.config.js && serve docs"
+  },
+  "directories": {
+    "tests": "tests"
+  },
+  "files": [
+    "index.js",
+    "build/",
+    "contracts/",
+    "src/",
+    "tests/",
+    "dist/*"
+  ],
+  "author": "micky@binarzone.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mickys/zoom-ethersjs"
+  },
+  "keywords": [
+    "zoom-next",
+    "zoom-ethersjs"
+  ],
+  "bugs": {
+    "url": "https://github.com/mickys/zoom-ethersjs/issues"
+  },
+  "homepage": "https://github.com/mickys/zoom-ethersjs#readme",
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "ethers": "^5.4.4",
+    "ethjs": "^0.2.8"
+  },
+  "devDependencies": {
+    "@0x/subproviders": "^6.5.4",
+    "@ethercards/ec-util": "^1.0.4",
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-etherscan": "^2.1.4",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@openzeppelin/contracts": "^4.3.3",
+    "@openzeppelin/contracts-upgradeable": "^4.4.1",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-sucrase": "^3.1.0",
+    "@typechain/ethers-v5": "^7.0.1",
+    "@typechain/hardhat": "^2.0.2",
+    "@types/chai": "^4.2.18",
+    "@types/cli-table": "^0.3.0",
+    "@types/crypto-js": "^4.0.2",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^15.12.2",
+    "axios": "^0.21.1",
+    "chai": "^4.3.4",
+    "cli-table": "^0.3.6",
+    "dotenv": "^10.0.0",
+    "ethereum-waffle": "^3.4.0",
+    "gulp": "^4.0.2",
+    "hardhat": "^2.6.0",
+    "hardhat-contract-sizer": "^2.0.3",
+    "hardhat-deploy": "^0.8.11",
+    "hardhat-tracer": "^1.0.0-alpha.6",
+    "rollup": "^2.51.2",
+    "serve": "^12.0.0",
+    "solidity-coverage": "^0.7.16",
+    "ts-generator": "^0.1.1",
+    "ts-node": "^10.0.0",
+    "typechain": "^5.0.0",
+    "typescript": "^4.3.2",
+    "underscore": "^1.13.1"
+  }
+}
